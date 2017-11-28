@@ -27,10 +27,9 @@ angular.module('myApp.view1', ['ngRoute'])
             xhr.send();
         }
         $scope.getCotacao = function () {
-            loadJSON('https://forex.1forge.com/1.0.2/quotes?pairs=USDEUR,USDGBP,USDJPY,USDCNH&api_key=Ghy9AQMkEnKVIj8wyjX06DEQhrfRkpmm',
+            loadJSON('https://forex.1forge.com/1.0.2/quotes?pairs=USDEUR,USDGBP,USDJPY,USDCNH&api_key=eBQyTZiqrgLVPSFHWCDpJ23tepFYnEXt',
                 function (data) {
                     $scope.Lista = data;
-                    $scope.coisa = true;
                     console.log(data);
                     setTimeout($scope.getCotacao, 30000);
                     $scope.$apply();

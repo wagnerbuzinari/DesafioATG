@@ -30,8 +30,8 @@ angular.module('myApp.view2', ['ngRoute'])
             xhr.open("GET", path, true);
             xhr.send();
         }
-        $scope.converter = function (de, para) {
-            loadJSON('https://forex.1forge.com/1.0.2/convert?from=' + de + '&to=' + para + '&quantity=100&api_key=Ghy9AQMkEnKVIj8wyjX06DEQhrfRkpmm',
+        $scope.converter = function (de, para, valor) {
+            loadJSON('https://forex.1forge.com/1.0.2/convert?from=' + de + '&to=' + para + '&quantity=' + valor + '&api_key=eBQyTZiqrgLVPSFHWCDpJ23tepFYnEXt',
                 function (data) {
                     $scope.Lista = data;
                     $scope.coisa = true;
