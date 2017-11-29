@@ -9,7 +9,8 @@ angular.module('myApp.view1', ['ngRoute'])
     }])
 
     .controller('View1Ctrl', ['$scope', function ($scope) {
-        $scope.buttonClicked = false;
+        var contador = 30;
+        $scope.contador = contador;
         function loadJSON(path, success, error) {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
@@ -31,16 +32,26 @@ angular.module('myApp.view1', ['ngRoute'])
                 function (data) {
                     $scope.Lista = data;
                     console.log(data);
+                    $scope.contador = 30;
                     setTimeout($scope.getCotacao, 30000);
                     $scope.$apply();
-                    $scope.buttonClicked = true;
                 },
                 function (xhr) {
                     console.error(xhr);
-                    $scope.buttonClicked = true;
                     $scope.$apply();
                 }
             );
         }
+
+        $scope.reduzirContador = function () {
+            setTimeout(function () {
+                $scope.contador = $scope.contador - 1;
+                console.log('passeo');
+                setTimeout($scope.reduzirContador, 0);
+                $scope.$apply();
+                $scope.reduzirContador;
+            }, 1000);
+        }
+        $scope.reduzirContador();
         $scope.getCotacao();
     }]);
